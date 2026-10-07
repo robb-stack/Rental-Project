@@ -73,7 +73,6 @@ const App = () => {
           <Route path="/documents" element={<Documents />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-cancel" element={<PaymentCancel />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
 
         </Routes>
 

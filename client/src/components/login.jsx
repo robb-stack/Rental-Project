@@ -67,12 +67,7 @@ const Login = () => {
                     className="w-full p-2 border bg-white dark:bg-gray-800 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300"
                     required
                 />
-                <p className="text-sm text-right">
-    <Link to="/forgot-password" className="text-blue-500 underline hover:text-blue-600">
-        Forgot password?
-    </Link>
-               </p>
-
+                
                 {error && <p className="text-red-500 text-sm">{error}</p>}
 
                 <button
