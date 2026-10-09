@@ -19,6 +19,7 @@ import SentimentReview from "./components/SentimentReview";
 import Documents from "./components/Documents";
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentCancel from "./components/PaymentCancel";
+import ForgotPassword from "./components/ForgotPassword";
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -68,6 +69,7 @@ const App = () => {
           />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cars" element={<Cars />} />
           <Route path="/documents" element={<Documents />} />

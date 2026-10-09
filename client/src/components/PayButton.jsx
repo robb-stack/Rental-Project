@@ -14,18 +14,18 @@ const PayButton = ({ bookingId, carName, amount, customerEmail }) => {
         body: JSON.stringify({
           bookingId,
           carName,
-          amount,
+          amountc,
           customerEmail,
         }),
       });
 
+      // console.log({bookingId, carName, amount, customerEmail});
+
       const data = await res.json();
 
-      if (data.url) {
+      if (data.url) { 
         window.location.href = data.url; // Redirect to Stripe
-      } else {
-        alert('Failed to start payment');
-      }
+      } 
     } catch (error) {
       console.error(error);
       alert('Something went wrong');

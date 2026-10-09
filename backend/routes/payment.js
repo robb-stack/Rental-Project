@@ -16,7 +16,7 @@ router.post('/create-checkout-session', async (req, res) => {
       line_items: [
         {
           price_data: {
-            currency: 'rs', // change to 'usd' if you want
+            currency: 'usd', // change to 'usd' if you want
             product_data: {
               name: `Car Rental - ${carName}`,
               description: `Booking ID: ${bookingId}`,

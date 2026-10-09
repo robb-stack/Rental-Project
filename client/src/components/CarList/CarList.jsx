@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PayButton from "../PayButton";   
+import DatePicker from "../DatePicker/DatePicker";
 
 const CarList = () => {
   const [vehicles, setVehicles] = useState([]);
   const [userBookings, setUserBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null); // ← for showing pay button
+  const [bookingDates, setBookingDates] = useState({});
+
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -21,10 +24,21 @@ const CarList = () => {
     }
   }, []);
 
+  const handleDateChange = (carId, value) => {
+    setBookingDates((prev) => ({ ...prev, [carId]: value }));
+  } ;
+
   const handleBookNow = async (vehicleId, carName, amount) => {
+    const bookingDate = bookingDates[vehicleId];
     if (!user) {
       alert("Please log in to book a vehicle.");
       return;
+    }
+
+    if(!bookingDate){
+      alert("Please Input the booking date as well.");
+      return;
+
     }
 
     try {
@@ -101,7 +115,7 @@ const CarList = () => {
                   className="w-full h-full object-cover border-2 border-gray-400 rounded-lg group-hover:scale-[1.05] transition duration-300"
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <h1 className="text-primary font-semibold">{car.name}</h1>
                 <div className="flex justify-between items-center text-xl font-semibold">
                   <p>Rs. {car.adjustedRate}/Day</p>
@@ -120,6 +134,29 @@ const CarList = () => {
               <p className="text-xl font-semibold capitalize text-[0.85em]">
                 Status: <span className="text-green-500">{isBooked(car.id) ? "Booked" : car.status}</span>
               </p>
+              <div className="text-sm">
+                <label htmlFor="date" className="">Booking Date: </label>
+                <input
+                  type="date"
+                  name="date"
+                  className=""
+                  style={{
+                    padding: '10px 12px',
+                    fontSize: '14px',
+                    fontFamily: 'inherit',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '8px',
+                    outline: 'none',
+                    color: '#111',
+                    background: '#fff',
+                    cursor: 'pointer',
+                    width: '100%',
+                    maxWidth: '260px',
+                  }}
+                  value={bookingDates[car.id] || ""}
+                  onChange={(e) => handleDateChange(car.id, e.target.value)}
+                />
+              </div>
               <div className="h-[0.2vh] w-full bg-black"></div>
               <p className="text-[0.8em] text-gray-500"><span className="font-semibold text-black/80">Note:</span> Pickup Available Only in Kathmandu</p>
             </div>
