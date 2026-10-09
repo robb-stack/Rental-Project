@@ -14,7 +14,7 @@ const PayButton = ({ bookingId, carName, amount, customerEmail }) => {
         body: JSON.stringify({
           bookingId,
           carName,
-          amountc,
+          amount,
           customerEmail,
         }),
       });

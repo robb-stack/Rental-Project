@@ -1,0 +1,18 @@
+# Environment variables (important)
+.env
+backend/.env
+client/.env
+
+# Dependencies
+node_modules/
+backend/node_modules/
+client/node_modules/
+admin/node_modules/
+
+# Uploads
+backend/public/uploads/
+
+# Others
+.DS_Store
+dist/
+build/
